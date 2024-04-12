@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="author" content="任思宁" />
+    <meta name="description" content="用于练习的音乐播放页面" />
+    <meta name="viewport" content="width=1226, initial-scale=1.0" />
+    <title>musicPlayer</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./imgs/logo-apple.svg" />
+    <link rel="stylesheet" type="text/css" href="./css/musicPlayer.css" />
+  </head>
+  <body>
+    <audio style="display: none"></audio>
+    <div class="music-player">
+      <div class="volume-control">
+        <div class="mute">
+          <svg
+            id="volume-high"
+            class="overlay"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg">
+            <title>Ctrl+M</title>
+            <path
+              d="M126 192 H56 a8 8 0 00-8 8 v112 a8 8 0 008 8 h69.65 a15.93 15.93 0 0110.14 3.54l91.47 74.89 A8 8 0 00240 392 V120a8 8 0 00-12.74-6.43l-91.47 74.89 A15 15 0 01126 192z M320 320 c9.74-19.38 16-40.84 16-64 0-23.48-6-44.42-16-64 M368 368 c19.48-33.92 32-64.06 32-112s-12-77.74-32-112 M416 416 c30-46 48-91.43 48-160 s-18-113-48-160"></path>
+          </svg>
+          <svg
+            id="volume-mute"
+            class="overlay invisible"
+            viewBox="0 0 512 512"
+            xmlns="http://www.w3.org/2000/svg">
+            <title>Ctrl+M</title>
+            <path d="M416 432L64 80"></path>
+            <path
+              d="M224 136.92v33.8 a4 4 0 001.17 2.82l24 24 a4 4 0 006.83-2.82 v-74.15a24.53 24.53 0 00-12.67-21.72 23.91 23.91 0 00-25.55 1.83 8.27 8.27 0 00-.66.51 l-31.94 26.15 a4 4 0 00-.29 5.92 l17.05 17.06 a4 4 0 005.37.26z M224 375.08 l-78.07-63.92 a32 32 0 00-20.28-7.16 H64 v-96 h50.72 a4 4 0 002.82-6.83l-24-24 a4 4 0 00-2.82-1.17 H56 a24 24 0 00-24 24 v112 a24 24 0 0024 24 h69.76l91.36 74.8 a8.27 8.27 0 00.66.51 23.93 23.93 0 0025.85 1.69 A24.49 24.49 0 00256 391.45 v-50.17 a4 4 0 00-1.17-2.82 l-24-24 a4 4 0 00-6.83 2.82z M125.82 336z M352 256 c0-24.56-5.81-47.88-17.75-71.27 a16 16 0 00-28.5 14.54 C315.34 218.06 320 236.62 320 256 q0 4-.31 8.13 a8 8 0 002.32 6.25l19.66 19.67 a4 4 0 006.75-2 A146.89 146.89 0 00352 256z M416 256 c0-51.19-13.08-83.89-34.18-120.06 a16 16 0 00-27.64 16.12 C373.07 184.44 384 211.83 384 256 c0 23.83-3.29 42.88-9.37 60.65 a8 8 0 001.9 8.26 l16.77 16.76 a4 4 0 006.52-1.27 C410.09 315.88 416 289.91 416 256z"></path>
+            <path
+              d="M480 256 c0-74.26-20.19-121.11-50.51-168.61 a16 16 0 10-27 17.22C429.82 147.38 448 189.5 448 256 c0 47.45-8.9 82.12-23.59 113 a4 4 0 00.77 4.55 L443 391.39 a4 4 0 006.4-1 C470.88 348.22 480 307 480 256z"></path>
+          </svg>
+        </div>
+        <input id="volume-range" type="range" min="0" max="100" value="30" step="any" />
+        <div class="play-rate">
+          <svg id="play-speed" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <title>Ctrl+Z</title>
+            <path
+              d="M315.27 33L96 304h128l-31.51 173.23a2.36 2.36 0 002.33 2.77h0a2.36 2.36 0 001.89-.95L416 208H288l31.66-173.25a2.45 2.45 0 00-2.44-2.75h0a2.42 2.42 0 00-1.95 1z"></path>
+          </svg>
+          <span class="rate-value">1.0</span>
+        </div>
+      </div>
+      <div class="details">
+        <div class="details-item">
+          <img id="cover" src="" />
+        </div>
+        <div class="details-item info">
+          <h2 id="title"></h2>
+          <h3 id="singer"></h3>
+          <div class="control-btns">
+            <svg id="skip-back" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <title>Ctrl+←</title>
+              <path
+                d="M400 111 v290 c0 17.44-17 28.52-31 20.16 L121.09 272.79 c-12.12-7.25-12.12-26.33 0-33.58 L369 90.84 c14-8.36 31 2.72 31 20.16z"></path>
+              <path d="M112 80v352"></path>
+            </svg>
+          </div>
+          <div class="control-btns">
+            <svg id="play" class="overlay" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <title>space</title>
+              <path
+                d="M112 111 v290c0 17.44 17 28.52 31 20.16 l247.9-148.37 c12.12-7.25 12.12-26.33 0-33.58 L143 90.84 c-14-8.36-31 2.72-31 20.16z"></path>
+            </svg>
+            <svg
+              id="pause"
+              class="overlay invisible"
+              viewBox="0 0 512 512"
+              xmlns="http://www.w3.org/2000/svg">
+              <title>space</title>
+              <path d="M176 96 h16 v320 h-16z M320 96 h16 v320 h-16z"></path>
+            </svg>
+          </div>
+          <div class="control-btns">
+            <svg id="skip-forward" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+              <title>Ctrl+→</title>
+              <path
+                d="M112 111 v290 c0 17.44 17 28.52 31 20.16l247.9-148.37 c12.12-7.25 12.12-26.33 0-33.58 L143 90.84 c-14-8.36-31 2.72-31 20.16z"></path>
+              <path d="M400 80 v352"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="time">
+        <input id="progress" type="range" min="0" max="100" value="0" step="any" />
+        <span id="time-view"></span>
+      </div>
+      <div class="lyric">
+        <ul id="lyric-box"> </ul>
+      </div>
+    </div>
+  </body>
+  <script src="./javaScript/musicPlayer.js"></script>
+</html>
